@@ -72,6 +72,11 @@ function calculateLeftoverBlocks(cubes, layers = 1) {
     : calculateLeftoverBlocks(blocksRemaining - cubesRequired, (layers += 1));
 }
 
+// one liner
+const calculateLeftoverBlocks = (cubes, layers = 1) => Math.pow(layers, 2) > cubes
+? cubes
+: calculateLeftoverBlocks(cubes - Math.pow(layers, 2), (layers += 1));
+
 console.log(calculateLeftoverBlocks(0) === 0); //true
 console.log(calculateLeftoverBlocks(1) === 0); //true
 console.log(calculateLeftoverBlocks(2) === 1); //true
